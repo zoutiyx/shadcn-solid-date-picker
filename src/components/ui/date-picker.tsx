@@ -11,7 +11,7 @@ import type {
   DatePickerTableRowProps,
   DatePickerViewControlProps,
   DatePickerViewProps,
-  DatePickerViewTriggerProps
+  DatePickerViewTriggerProps,
 } from "@ark-ui/solid";
 import { DatePicker as DatePickerPrimitive } from "@ark-ui/solid";
 import type { VoidProps } from "solid-js";
@@ -29,22 +29,15 @@ export const DatePickerContext = DatePickerPrimitive.Context;
 export const DatePickerRootProvider = DatePickerPrimitive.RootProvider;
 
 export const DatePicker = (props: DatePickerRootProps) => {
-  return (
-    <DatePickerPrimitive.Root
-      format={e =>
-        new Intl.DateTimeFormat("en-US", {
-          dateStyle: "long"
-        }).format(new Date(e.toString()))
-      }
-      {...props}
-    />
-  );
+  return <DatePickerPrimitive.Root {...props} />;
 };
 
 export const DatePickerView = (props: DatePickerViewProps) => {
   const [local, rest] = splitProps(props, ["class"]);
 
-  return <DatePickerPrimitive.View class={cn("space-y-4", local.class)} {...rest} />;
+  return (
+    <DatePickerPrimitive.View class={cn("space-y-4", local.class)} {...rest} />
+  );
 };
 
 export const DatePickerViewControl = (props: DatePickerViewControlProps) => {
@@ -58,12 +51,16 @@ export const DatePickerViewControl = (props: DatePickerViewControlProps) => {
       <DatePickerPrimitive.PrevTrigger
         class={cn(
           buttonVariants({
-            variant: "outline"
+            variant: "outline",
           }),
           "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100"
         )}
       >
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-4 w-4"
+          viewBox="0 0 24 24"
+        >
           <path
             fill="none"
             stroke="currentColor"
@@ -78,12 +75,16 @@ export const DatePickerViewControl = (props: DatePickerViewControlProps) => {
       <DatePickerPrimitive.NextTrigger
         class={cn(
           buttonVariants({
-            variant: "outline"
+            variant: "outline",
           }),
           "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100"
         )}
       >
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-4 w-4"
+          viewBox="0 0 24 24"
+        >
           <path
             fill="none"
             stroke="currentColor"
@@ -98,10 +99,17 @@ export const DatePickerViewControl = (props: DatePickerViewControlProps) => {
   );
 };
 
-export const DatePickerRangeText = (props: VoidProps<DatePickerRangeTextProps>) => {
+export const DatePickerRangeText = (
+  props: VoidProps<DatePickerRangeTextProps>
+) => {
   const [local, rest] = splitProps(props, ["class"]);
 
-  return <DatePickerPrimitive.RangeText class={cn("text-sm font-medium", local.class)} {...rest} />;
+  return (
+    <DatePickerPrimitive.RangeText
+      class={cn("text-sm font-medium", local.class)}
+      {...rest}
+    />
+  );
 };
 
 export const DatePickerTable = (props: DatePickerTableProps) => {
@@ -118,7 +126,12 @@ export const DatePickerTable = (props: DatePickerTableProps) => {
 export const DatePickerTableRow = (props: DatePickerTableRowProps) => {
   const [local, rest] = splitProps(props, ["class"]);
 
-  return <DatePickerPrimitive.TableRow class={cn("mt-2 flex w-full", local.class)} {...rest} />;
+  return (
+    <DatePickerPrimitive.TableRow
+      class={cn("mt-2 flex w-full", local.class)}
+      {...rest}
+    />
+  );
 };
 
 export const DatePickerTableHeader = (props: DatePickerTableHeaderProps) => {
@@ -126,7 +139,10 @@ export const DatePickerTableHeader = (props: DatePickerTableHeaderProps) => {
 
   return (
     <DatePickerPrimitive.TableHeader
-      class={cn("w-8 flex-1 text-[0.8rem] font-normal text-muted-foreground", local.class)}
+      class={cn(
+        "w-8 flex-1 text-[0.8rem] font-normal text-muted-foreground",
+        local.class
+      )}
       {...rest}
     />
   );
@@ -149,7 +165,9 @@ export const DatePickerTableCell = (props: DatePickerTableCellProps) => {
   );
 };
 
-export const DatePickerTableCellTrigger = (props: DatePickerTableCellTriggerProps) => {
+export const DatePickerTableCellTrigger = (
+  props: DatePickerTableCellTriggerProps
+) => {
   const [local, rest] = splitProps(props, ["class"]);
 
   return (
@@ -207,11 +225,18 @@ export const DatePickerInput = (props: DatePickerInputProps) => {
   return (
     <DatePickerPrimitive.Control class="flex h-9 w-full rounded-md border border-input bg-background px-3 py-1 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-[1.5px] focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50">
       <DatePickerPrimitive.Input
-        class={cn("w-full appearance-none bg-transparent outline-none", local.class)}
+        class={cn(
+          "w-full appearance-none bg-transparent outline-none",
+          local.class
+        )}
         {...rest}
       />
       <DatePickerPrimitive.Trigger class="transition-shadow focus-visible:outline-none focus-visible:ring-[1.5px] focus-visible:ring-ring">
-        <svg xmlns="http://www.w3.org/2000/svg" class="mx-1 h-4 w-4" viewBox="0 0 24 24">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="mx-1 h-4 w-4"
+          viewBox="0 0 24 24"
+        >
           <path
             fill="none"
             stroke="currentColor"

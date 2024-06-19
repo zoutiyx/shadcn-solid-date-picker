@@ -29,7 +29,24 @@ export const DatePickerContext = DatePickerPrimitive.Context;
 export const DatePickerRootProvider = DatePickerPrimitive.RootProvider;
 
 export const DatePicker = (props: DatePickerRootProps) => {
-  return <DatePickerPrimitive.Root {...props} />;
+  return (
+    <DatePickerPrimitive.Root
+      format={(e) => {
+        const parsedDate = new Date(Date.parse(e.toString()));
+
+        const normalizedDate = new Date(
+          parsedDate.getUTCFullYear(),
+          parsedDate.getUTCMonth(),
+          parsedDate.getUTCDate()
+        );
+
+        return new Intl.DateTimeFormat("en-US", {
+          dateStyle: "long",
+        }).format(normalizedDate);
+      }}
+      {...props}
+    />
+  );
 };
 
 export const DatePickerView = (props: DatePickerViewProps) => {
